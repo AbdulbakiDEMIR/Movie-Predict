@@ -1,0 +1,193 @@
+*{margin: 0px; padding: 0px; outline: none; border: none; list-style: none;text-decoration: none;box-sizing: border-box;}
+@media (prefers-reduced-motion: no-preference) {:root {scroll-behavior: smooth;}}
+html {font-size: 16px;}
+@media (max-width: 1100px) {html { font-size: 14px; }}
+@media (max-width: 480px) {html { font-size: 12px; }}
+h1{ font-family: 'Open Sans', sans-serif;}
+h2{ font-family: 'Open Sans', sans-serif;}
+h3{ font-family: 'Open Sans', sans-serif;}
+h4{ font-family: 'Open Sans', sans-serif;}
+h5{ font-family: 'Open Sans', sans-serif;}
+h6{ font-family: 'Open Sans', sans-serif;}
+
+#spinner-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../img/background.jpg);
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: url(../img/background.jpg);
+    background-position: center;
+    background-size: cover;
+}
+#main-bg{
+    width: 100%;
+    height: 100vh;
+}
+.main-title {
+    text-align: center;
+    font-weight: bold;
+    height: auto;
+}
+.full-center{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.auto-center{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.transparent-card{
+    height: auto;
+    backdrop-filter: blur(10px) brightness(0.2);
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: white;
+}
+
+.movie-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.movie-container{
+    display: table;
+    /* background: rgb(176, 8, 8); */
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    .rating-stars{
+        position: sticky;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        i{  
+            cursor: pointer;
+            color: gold;
+            font-size: 1.5rem;
+        }
+    }
+    .movie-image{
+        transition: all 0.3s ease-in-out;
+        border-radius: 1rem;
+        --bs-aspect-ratio:calc(100% * 3 / 2 + 30px);
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        > img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+    }
+    .movie-details{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+        > * {
+            position: absolute;
+            transition: all 0.3s ease-in-out;
+            background: rgb(0, 0, 0, 0.8);
+
+        }
+        h3{
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 100%;
+            padding: 1rem 0 ;
+            top: -5rem;
+            /* top: 0rem; */
+            left: 0;
+        }
+        .movie-info{
+            bottom: -5rem;
+            left: 0;
+            width: 100%;
+            padding: 0.5rem;
+            color: white;
+        }
+        p{
+            font-size: 1rem;
+            margin-bottom: 0!important;
+        }
+    }
+}
+
+
+.movie-image:hover{
+        transform: scale(1.05);
+
+    .movie-details h3{
+        top: 0;
+    }
+    .movie-details .movie-info{
+        bottom: 0;
+    }
+}
+
+
+.transparent{
+    backdrop-filter: blur(10px);
+    background-color: #00000093;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+#categories-container{
+    position: fixed;
+    overflow: auto;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#categories-container[show="false"]{
+    display: none;
+}
+.category-item{
+    transition: all 0.3s;
+}
+.category-item[selected="true"]{
+    background: #0f591e;
+    border: none;
+}
+.category-item:hover{
+    transform: scale(1.1);
+}
+
+
+.tmdb-icon{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: #000000;
+    padding: 0.4rem;
+}
