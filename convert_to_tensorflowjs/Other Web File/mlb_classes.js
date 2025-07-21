@@ -1,0 +1,22 @@
+export const mlb_classes = [
+  "Crime",
+  "Action",
+  "Western",
+  "Fantasy",
+  "Musical",
+  "Adventure",
+  "IMAX",
+  "Film-Noir",
+  "Mystery",
+  "Sci-Fi",
+  "Comedy",
+  "Horror",
+  "Animation",
+  "Romance",
+  "Children",
+  "(no genres listed)",
+  "Thriller",
+  "War",
+  "Drama",
+  "Documentary"
+];
