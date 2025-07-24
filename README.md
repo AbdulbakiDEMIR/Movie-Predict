@@ -1,6 +1,6 @@
 # Movie Predict
 
-This project is a machine learning system that predicts movie ratings and makes recommendations based on users' movie preferences. The model makes predictions using user, movie, and genre information, and is made available for use in the web environment with TensorFlow.js.
+This project is a machine learning system that predicts movie ratings and makes recommendations based on users movie preferences. The model makes predictions using user, movie, and genre information, and is made available for use in the web environment with TensorFlow.js.
 
 **This project was developed in collaboration with [Ahmet Yasir Kulaksız](https://github.com/ahmet-yasir).**
 
