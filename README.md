@@ -28,36 +28,6 @@ Movie Predict/
     └── model/ (Model files for web)
 ```
 > ⚠️ **Python 3.10 was used throughout the project and is recommended for use.**
-# Movie Predict
-
-This project is a machine learning system that predicts movie ratings and makes recommendations based on users' movie preferences. The model makes predictions using user, movie, and genre information, and is made available for use in the web environment with TensorFlow.js.
-
-**This project was developed in collaboration with [Ahmet Yasir Kulaksız](https://github.com/ahmet-yasir).**
-
-## Project Structure
-
-```
-Movie Predict/
-│
-├── convert_to_tensorflowjs/
-│   ├── convert_tensorflowjs.py
-│   ├── model_export.py
-│   ├── other_web_files/
-│   │   ├── mlb_classes.js
-│   │   ├── movie_encoder.js
-│   │   └── movies.js
-│   └── requirements.txt
-│
-├── train/
-│   ├── train.py
-│   └── requirements.txt
-│
-└── docs/
-    ├── index.html, app.js, config.js
-    ├── components/, js/, css/, img/
-    └── model/ (Model files for web)
-```
-> ⚠️ **Python 3.10 was used throughout the project and is recommended for use.**
 
 
 ## Dataset Information
