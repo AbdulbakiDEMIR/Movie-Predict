@@ -9,21 +9,21 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import Huber
 from tensorflow.keras.callbacks import EarlyStopping
 
-# === 1. VERİ YÜKLEME ===
+# === 1. DATA LOADING ===
 path = kagglehub.dataset_download("parasharmanas/movie-recommendation-system")
 movies = pd.read_csv(path+"/movies.csv")
 ratings = pd.read_csv(path+"/ratings.csv")
 
-# === 2. VERİ HAZIRLAMA ===
+# === 2. DATA PREPARATION ===
 data = ratings.merge(movies, on="movieId")
 data["genres"] = data["genres"].apply(lambda x: x.split('|'))
 
-# Kullanıcı ve film sayısı çok az olanları filtrele
-valid_users = data["userId"].value_counts()
-valid_movies = data["movieId"].value_counts()
+# Filter users and movies with very few ratings
+good_users = data["userId"].value_counts()
+good_movies = data["movieId"].value_counts()
 data = data[
-    data["userId"].isin(valid_users[valid_users > 10].index) &
-    data["movieId"].isin(valid_movies[valid_movies > 10].index)
+    data["userId"].isin(good_users[good_users > 10].index) &
+    data["movieId"].isin(good_movies[good_movies > 10].index)
 ]
 
 # Encode user/movie
@@ -36,12 +36,12 @@ data["movie_enc"] = movie_encoder.fit_transform(data["movieId"])
 mlb = MultiLabelBinarizer()
 genre_matrix = mlb.fit_transform(data["genres"])
 
-# Eğitim girdileri
+# Training inputs
 user_ids = data["user_enc"].values
 movie_ids = data["movie_enc"].values
 ratings_val = data["rating"].values
 
-# === 3. MODEL MİMARİSİ ===
+# === 3. MODEL ARCHITECTURE ===
 num_users = data["user_enc"].nunique()
 num_movies = data["movie_enc"].nunique()
 num_genres = genre_matrix.shape[1]
@@ -64,10 +64,10 @@ output = Dense(1, name="rating_output")(x)
 model = Model(inputs=[user_input, movie_input, genre_input], outputs=output)
 model.compile(optimizer=Adam(learning_rate=0.0003), loss=Huber())
 
-# === 4. ERKEN DURDURMA ===
+# === 4. EARLY STOPPING ===
 early_stop = EarlyStopping(monitor="val_loss", patience=3, restore_best_weights=True)
 
-# === 5. MODEL EĞİTİMİ ===
+# === 5. MODEL TRAINING ===
 model.fit(
     [user_ids, movie_ids, genre_matrix],
     ratings_val,
@@ -78,13 +78,12 @@ model.fit(
     callbacks=[early_stop]
 )
 
-# === 6. MODEL VE ENCODER'LARI KAYDET ===
+# === 6. SAVE MODEL AND ENCODERS ===
 model.save("movie_predict_model.h5")
-print("✅ Model kaydedildi: movie_predict_model.h5")
+print("✅ Model saved: movie_predict_model.h5")
 
 with open("movie_encoder.pkl", "wb") as f:
     pickle.dump(movie_encoder, f)
 with open("mlb.pkl", "wb") as f:
     pickle.dump(mlb, f)
-print("✅ movie_encoder.pkl ve mlb.pkl kaydedildi.")
-
+print("✅ movie_encoder.pkl and mlb.pkl saved.")

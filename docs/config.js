@@ -1,7 +1,7 @@
 // config.js
 export const config =  {
-    basePath: "/Movie-Predict/",
-    // basePath: "/",
+    // basePath: "/Movie-Predict/",
+    basePath: "/docs/",
     scripts: [
         { path: "js/script.js", type: "module" },
         { path: "app.js", type: "module" }

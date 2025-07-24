@@ -11,5 +11,4 @@ command = [
     output_path
 ]
 
-# Komutu çalıştır
 subprocess.run(command, check=True)
