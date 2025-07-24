@@ -307,18 +307,18 @@ To experience the application in the web interface, [click here](https://abdulba
 ### 6.1 Category Selection
 First, select up to 3 categories as shown in the image and click the `Next` button. Predictions will be made based on these categories.
 
-![Image 1](docs\img\page-1.png)
+![Image 1](docs/img/page-1.png)
 
 ### 6.2 Movie Rating
 After selecting categories, you will see 10 movies. You can rate these movies from 1 to 5 stars using the stars below the images. You must give at least 1 and at most 5 points.
 After rating all 10 movies, you can see the movies recommended by the model by clicking the `Show Rating` button.
 
-![Image 2](docs\img\page-2.png) 
+![Image 2](docs/img/page-2.png) 
 
 ### 6.3 Movie Predict
 After the movie rating process, you can see the models listed by the model for you.
 
-![Image 3](docs\img\page-3.png) 
+![Image 3](docs/img/page-3.png) 
 
 
 ---
